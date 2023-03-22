@@ -1,11 +1,12 @@
 @extends('header')
+@section('title')
+<?php 
+            echo $articles->titre ?>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3>Etat de stock</h3>
-        <a href="/matieres/achatTodo">
-            <button class="btn btn-success">Liste des achats a faire</button>
-        </a>
         <style>
             .containera {
                 display: grid;
@@ -42,38 +43,26 @@
 
 
             <?php 
-        foreach ($articles as $key ) {
+        // foreach ($articles as $key ) 
+        
       ?>
             <div class="cardx">
                 <h2>
                     <?php 
-            echo $key->titre ?>
+            echo $articles->titre ?>
                 </h2>
-                <img src="/<?php echo $key->photo?>" />
+                <img src="/<?php echo $articles->photo?>" />
                 <p>
                     <?php 
-                    // ("JI io h vgf ytyt ytyu,9i hhi iii jjk hhu yyu h yytyt huy yuyuOPOiu");
-
-                        echo $key->resume;
-     ?>
-     <?php 
-     ?>
-                
-            </p>
-                <p>
-                
-<a href="<?php echo Util::slugify($key->titre)."-".$key->id ?>.html">
-                <button class="btn btn-success">
-VOIR+
-</button>
-        </a>
-
+    echo $articles->resume ?>
                 </p>
             </div>
+            <div class="cardx">
+            <p><?php echo $articles->contenu ?></p>
 
-
+            </div>
             <?php
-        }
+       
         ?>
 
         </div>

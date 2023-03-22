@@ -47,7 +47,7 @@
         <a class="nav-link" href="/home">Ajouter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="articles/list">Liste</a>
+        <a class="nav-link" href="articles">Liste</a>
       </li>
      
     </ul>

@@ -6,6 +6,7 @@ use App\Models\Util;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Categorie;
+
  
 // Route::get('/test', function () {
 //     return view('myhome',
@@ -101,11 +102,19 @@ return view('admin.signup');
   return redirect('home');
    
     } 
+   
     public function list(Request $request)
     {
         $ar=Article::all();
        return view('liste',  [ 
         'articles'=>$ar
            ]);   
-       }   
+       } 
+       public function detail(string $slug,string $id)
+       {
+           $ar=Article::find($id);
+          return view('detail',  [ 
+           'articles'=>$ar
+              ]);   
+          }   
 }

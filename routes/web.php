@@ -30,6 +30,7 @@ Route::get('/', function () {
 // /Route::get('test/{id}',[UsersController::class,'test']); 
 // Route::get('/home',[ArticleController::class,'home']); 
 Route::get('/home',[ArticleController::class,'home']); 
+Route::get('/{slug}-{id}.html',[ArticleController::class,'detail'])->where(['id'=>'(\d+)','slug'=>'([a-zA-Z0-9\-]+)']); 
 Route::post('/articles/create',[ArticleController::class,'create']); 
-Route::get('/articles/list',[ArticleController::class,'list']); 
+Route::get('/articles',[ArticleController::class,'list']); 
 Route::get('/test',[ArticleController::class,'test']); 
