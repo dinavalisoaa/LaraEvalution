@@ -33,8 +33,6 @@ return view('users.signup');
         echo $crypt;
         $user->mdp=$crypt;
         $user->save();
-        // $where=Users::orderBy('id','desc')->get();
-
         $farany=Users::orderBy('id','desc')->limit(1)->get();
     $req->session()->put('session',$farany[0]->id);
 
@@ -47,11 +45,8 @@ return view('users.signup');
     {
         $email =request('email');
         $mdp = request('mdp');
-        
-
         $id=Users::login($email,$mdp);
         if($id==-1){
-         
         return view('users.login',
         [ 
             'error'=>'error'
