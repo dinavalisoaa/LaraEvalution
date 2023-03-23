@@ -13,7 +13,7 @@ use \Carbon\Carbon;
 use App\Models\Users;
 // Route::get('/test', function () {
 //     return view('myhome',
-//         [ 
+//         [
 //             'id'=>'1'
 //         ]);
 // });
@@ -22,8 +22,8 @@ class UsersController extends Controller
 {
     public function toSignUp()
     {
-return view('users.signup');       
-    
+return view('users.signup');
+
     }public function action_inscription(Request $req)
     {
         $user=new Users();
@@ -40,7 +40,7 @@ return view('users.signup');
         // return view('users.login');
         return redirect('users/home');
     }
-    
+
     public function action_login(Request $req)
     {
         $email =request('email');
@@ -48,10 +48,10 @@ return view('users.signup');
         $id=Users::login($email,$mdp);
         if($id==-1){
         return view('users.login',
-        [ 
+        [
             'error'=>'error'
-        ]);   
-        
+        ]);
+
     }
     $req->session()->put('session',$id);
 
@@ -72,7 +72,7 @@ return view('users.signup');
         return view('users.test',compact(['value','all','now']));
         // $this->load->l//
         // return view('test',
-        // [ 
+        // [
         //     'all'=>$all,'order'=>$byOrder,'where'=>$where
         //     ,'last'=>$last,'id'=>1
         // ]);
