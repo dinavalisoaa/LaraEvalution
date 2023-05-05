@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
+use App\Models\Author;
+use App\Models\Theme;
 use App\Models\Util;
 
 use Illuminate\Http\Request;
@@ -71,14 +74,31 @@ class ArticleController extends Controller
     {
         $ar = Article::all();
         $cat = Categorie::all();
+        $theme = Theme::all();
+        $Author=Author::find($request->session()->get('sessionid'));
         return view(
             'home',
             [
-                'articles' => $ar, 'categorie' => $cat
+                'articles' => $ar,
+                'categorie' => $cat,
+                'theme' => $theme,
+                'author' => $Author
             ]
         );
     }
-
+    public function header(Request $request)
+    {
+      return view('header');
+    }
+    public function action_login(Request $request)
+    {
+        $login = Author::login(request('login'), request('mdp'));
+        if ($login == -1) {
+            return redirect('login');
+        }
+        $request->session()->put('sessionid', $login);
+        return redirect('home');
+    }
     public function create(Request $request)
     {
         $ar = Article::all();
@@ -86,6 +106,10 @@ class ArticleController extends Controller
         $resume = request('resume');
         $categorie = request('categorie');
         $contenu = request('contenu');
+        $theme = request('theme');
+        // $request->session()->put('sessionid',$login);
+
+        $session = $request->session()->get('sessionid');
 
         $file = $request->file('image');
         $photo = $file->getClientOriginalName();
@@ -98,22 +122,27 @@ class ArticleController extends Controller
         $article->resume = request('resume');
         $article->categorieid = request('categorie');
         $article->contenu = request('contenu');
+        $article->themeid = request('theme');
+        $article->authorid = $session;
         $article->save();
         $cat = Categorie::all();
         return redirect('home');
     }
-
+    public function login()
+    {
+        return view('login');
+    }
     public function list(Request $request)
     {
         $ar = Article::all();
-        return view('index',  [
+        return view('index', [
             'articles' => $ar
         ]);
     }
     public function detail(string $slug, string $id)
     {
         $ar = Article::find($id);
-        return view('detail',  [
+        return view('detail', [
             'articles' => $ar
         ]);
     }

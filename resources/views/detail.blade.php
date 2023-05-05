@@ -1,11 +1,11 @@
 @extends('header')
-{{-- @section('title')
-{{ $articles->titre}}
-@endsection --}}
+@section('description')
+<meta name="description" content="{{$articles->resume}}">
+@endsection
 
 @section('title')
 <title>
-    {{ $articles->titre}}
+{{ $articles->titre}}
     
 </title>
 
@@ -53,14 +53,17 @@
 		<div class="magazine-column">
 			<article class="article" >
 				<figure class="article-img">
-					<img  src="{{$articles->photo}}" />
+					<img  src="{{$articles->photo}}" alt="Photo IA {{$articles->getTheme()->nom}}" title="{{$articles->titre}}" />
 				</figure>
+                
 				<h2 class="article-title article-title--medium">
-					<a href="#" class="article-link">How 7 Lines of Code Turned Into a $36 Billion Empire</a>
+					<a href="#" class="article-link">
+                        <?=$articles->titre?>
+
+                    </a>
 				</h2>
 				<div class="article-excerpt">
-					<p>Yeah, it's safe to say these guys have a great sense of humor, which isn't really suprising for us considering their seemingly absurd solution to online payments. Instead of chasing 1000-hour programming contracts to build clunky payments solutions for each individual client, the Collison...</p>
-					<p>Yeah, it's safe to say these guys have a great sense of humor, which isn't really suprising for us considering their seemingly absurd solution to online payments. Instead of chasing 1000-hour programming contracts to build clunky payments solutions for each individual client, the Collison...</p>
+					<?=$articles->contenu?>
 				</div>
 				<div class="article-author">
 					<div class="article-author-img">

@@ -186,6 +186,37 @@ ALTER TABLE ONLY public.article
 -- PostgreSQL database dump complete
 --
 alter table article add column creation timestamp default current_timestamp;
+alter table article add column themeId int;
 
-insert into categorie(nom)values('Deep Learning');
-insert into categorie(nom)values('');
+create table author(
+    id serial PRIMARY key,
+    nom varchar,
+    login varchar,
+    mdp varchar
+);
+
+alter table article add column authorid int;
+alter table article add FOREIGN key (authorid) REFERENCES author(Id);
+
+insert into categorie(nom)values('Evenement');
+insert into categorie(nom)values('Flash Info');
+insert into categorie(nom)values('Blog');
+
+
+insert into theme(nom)values('Deep Learning');
+insert into theme(nom)values('Neural Link');
+insert into theme(nom)values('Machine Learning');
+insert into theme(nom)values('OpenIA');
+insert into theme(nom)values('ChatGPT');
+insert into theme(nom)values('Image Generator');
+insert into theme(nom)values('Danger IA');
+
+create table admin(
+    id serial PRIMARY key,
+    nom varchar(200),
+    login varchar(200),
+    mdp varchar(200)
+    );
+
+    insert into admin (nom,login,mdp)values('admin','admin@gmail.com',md5('admin'));
+    insert into author (nom,login,mdp)values('Rabe','rabe@gmail.com',md5('rabe'));

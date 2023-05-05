@@ -5,8 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Groupe extends Model
-{
-    protected $table = 'groupe';
+class Theme extends Model
+{ 
+    protected $table = 'theme';
+
+    /**
+     * @var array $fillable
+     */
+    public $timestamps=false;
     use HasFactory;
 }
