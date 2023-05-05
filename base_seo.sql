@@ -185,4 +185,7 @@ ALTER TABLE ONLY public.article
 --
 -- PostgreSQL database dump complete
 --
+alter table article add column creation timestamp default current_timestamp;
 
+insert into categorie(nom)values('Deep Learning');
+insert into categorie(nom)values('');

@@ -1,9 +1,0 @@
-<IfModule mod_rewrite.c>
-   RewriteBase/  
-   Options +FollowSymlinks
-   RewriteEngine On
-   RewriteRule *.html$  articles/list [L]
-  
-    
-</IfModule>
-

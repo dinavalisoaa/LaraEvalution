@@ -13,15 +13,15 @@ echo Util::slugify("JI io h vgf ytyt ytyu,9i hhi iii jjk hhu yyu h yytyt huy yuy
 
 // ?>
  <?PHP
-// function read($csv){
-//     $file = fopen($csv, 'r');
-//     while (!feof($file) ) {
-//         $line[] = fgets($file, 1024);
-//         // echo fgetcs($file, 1024);
-//     }
-//     fclose($file);
-//     return $line;
-// }
+function read($csv){
+    $file = fopen($csv, 'r');
+    while (!feof($file) ) {
+        $line[] = fgetcsv($file, 1024);
+        // echo fgetcs($file, 1024);
+    }
+    fclose($file);
+    return $line;
+}
 
 // $csv = 'Special.txt';
 // $csv = read($csv);
