@@ -1,7 +1,7 @@
 @extends('header')
 
 @section('description')
-    <meta name="description" content="Liste des actualites"">
+    <meta name="description" content="Liste des actualites">
 @endsection
 @section('title')
     <title>NEW-IA</title>
@@ -80,7 +80,7 @@
                         </p>
                     </div>
                     <div class="o-card_footer">
-                        <a href="/<?php echo Util::slugify($row->titre) . '-' . $row->id; ?>.html">
+                        <a href="/<?php echo Util::slugify($row->resume) . '-' . $row->id; ?>.html">
                             {{-- <a data-href="Ernest_Hemingway" href="target="_blank" class="a-readMore" data-modal="#first"> --}}
                             Read More <i class="icon-right"></i></a>
                     </div>
