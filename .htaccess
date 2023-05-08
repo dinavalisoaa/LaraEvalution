@@ -4,9 +4,6 @@
    RewriteEngine On
    RewriteBase/  
    RewriteRule ^dina.html$  /home [L]
-  
-
-    
     
 </IfModule>
 <IfModule mod_deflate.c>
@@ -32,16 +29,5 @@
    AddOutputFilterByType DEFLATE text/javascript
    AddOutputFilterByType DEFLATE text/plain
    AddOutputFilterByType DEFLATE text/xml
-  
-   # Level of compression (highest compression level)
-   DeflateCompressionLevel 9
-  
-   # Do not compress certain file types
-   SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-   SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
-   SetEnvIfNoCase Request_URI \.pdf$ no-gzip dont-vary
-  
-   # Make sure proxies don't deliver the wrong content
-   Header append Vary User-Agent env=!dont-vary
  </IfModule>
 
