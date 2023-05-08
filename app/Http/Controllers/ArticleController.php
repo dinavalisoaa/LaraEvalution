@@ -118,7 +118,7 @@ class ArticleController extends Controller
 
         $file = $request->file('image');
         $photo = $file->getClientOriginalName();
-        $destinationPath = 'uploads';
+        $destinationPath = './public/uploads';
         $file->move($destinationPath, $file->getClientOriginalName());
 
         $article = new Article();
