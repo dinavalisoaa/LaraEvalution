@@ -8,7 +8,9 @@
 @endsection
 @section('login')
     <div class='icons'>
+<a href="fsjdiuroieyiuw.html">
 
+</a>
 
         <div class='block'>
             <a class='user_profile' href='/login'>
@@ -56,7 +58,7 @@
                     @foreach ($articles as $row)
                         <div class="col-xl-4">
                             <div class="card">
-                                <img class="card-img-top img-fluid" width="200px" height="200px" src="/<?php echo $row->photo; ?>" alt="Card image cap">
+                                <img class="card-img-top img-fluid" width="200px" height="200px" src="<?php echo $row->photo; ?>" alt="Card image cap">
                                 <div class="card-header">
                                    
                                 </div>
