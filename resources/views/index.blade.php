@@ -32,9 +32,13 @@
         <div class="container-fluid">
             <nav class="main__menu">
                 <ul class="nav__menu">
+                    {{-- <ul class="nav__menu">
+                        <li><a href="/articles/list" class="menu--active">HOME</a></li>
+                        <li><a href="/login">LOGIN</a></li>
+                    </ul> --}}
                     @foreach ($theme as $row)
-                        <li><a href="/articles/list?theme={{ $row->id }}"
-                                class="btn btn-success">{{ $row->nom }}</a></li>
+                        <li style="background-color: ghostwhite;border-radius:30px"><a href="/articles/list?theme={{ $row->id }}"
+                                ><p>{{ $row->nom }}</p></a></li>
                     @endforeach
 
                 </ul>
@@ -52,7 +56,7 @@
                     @foreach ($articles as $row)
                         <div class="col-xl-4">
                             <div class="card">
-                                <img class="card-img-top img-fluid" src="/<?php echo $row->photo; ?>" alt="Card image cap">
+                                <img class="card-img-top img-fluid" width="200px" height="200px" src="/<?php echo $row->photo; ?>" alt="Card image cap">
                                 <div class="card-header">
                                    
                                 </div>
