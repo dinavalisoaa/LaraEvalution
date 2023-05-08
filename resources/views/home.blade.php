@@ -42,9 +42,9 @@
                     <div class="card-body">
                         <div class="basic-form">
                           <form action="articles/create" enctype="multipart/form-data" method="POST">
+                            @csrf
            
                           <div class="mb-3">
-                              @csrf
                               <div class="form-group">
                                   <label for="exampleInputName1">Titre</label>
                                   <input type="text" name="titre" class="form-control" id="exampleInputName1"
@@ -107,7 +107,7 @@
         
                                 </div>
                                 <br />
-                                <input type="submit" value="AJOUTER">
+                                {{-- <input type="submit" value="AJOUTER"> --}}
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
                                 </div>

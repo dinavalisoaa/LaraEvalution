@@ -39,15 +39,6 @@ class Util extends Model
        // Return result
        return $text;
    }
-   public static function slugify_($urlString)
-       {
-         $search = ['Ș', 'Ț', 'ş', 'ţ', 'Ş', 'Ţ', 'ș', 'ț', 'î', 'â', 'ă', 'Î', ' ', 'Ă', 'ë', 'Ë'];
-         $replace = ['s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E'];
-         $str = str_ireplace($search, $replace, strtolower(trim($urlString)));
-         $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
-         $str = str_replace(' ', '-', $str);
-         return preg_replace('/\-{2,}', '-', $str);
-       }
    
     public static function login($email,$mdp){
         $tab=Users::fromQuery("select *From users where Email='".$email."' and mdp='".$mdp."' limit 1");

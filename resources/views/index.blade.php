@@ -28,6 +28,18 @@
     </div>
 @endsection
 @section('content')
+<header class="header">
+    <div class="container-fluid">
+        <nav class="main__menu">
+            <ul class="nav__menu">
+                @foreach ($theme as $row )
+                <li><a  href="/articles/list?theme={{$row->id}}" class="btn btn-success">{{$row->nom}}</a></li>
+                @endforeach
+
+            </ul>
+        </nav>
+    </div>
+</header>
     <div class="a-container">
         <h1 style="text-align:center;">IA NEWS</h1>
         <div class="o-card_container">
@@ -55,9 +67,9 @@
                                 <a class="o-card-headerList--link" href="#"><i class="icon-github"></i></a>
                             </li>
                         </ul>
-                        <div class="o-card_logo"
+                        {{-- <div class="o-card_logo"
                             style="background:url(https://s3.eu-west-2.amazonaws.com/pirolab/images/hemingway.jpg) center no-repeat;">
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="o-card_body">
                         <h1 class="h1">
@@ -86,7 +98,9 @@
                     </div>
                 </div>
             @endforeach
-
+{{
+    $articles->links();
+}}
 
         </div>
     </div>

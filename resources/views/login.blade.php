@@ -16,15 +16,16 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      {{-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> --}}
     </div>
 
     <!-- Login Form -->
     <form action="/action_login" method="post">
       @csrf
-      
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="mdp" placeholder="password">
+      {{ csrf_field() }}
+        {{-- <label></label> --}}
+      <input type="text" id="login" class="fadeIn second"value="rabe@gmail.com" name="login" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="mdp" value="rabe"placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
 

@@ -47,15 +47,8 @@
 			</div>
 			<nav class="main__menu">
 				<ul class="nav__menu">
-					<li><a href="./index.html" class="menu--active">Home</a></li>
-					<li><a href="./about.html">About</a></li>
-					<li><a href="./gallery.html">Gallery</a></li>
-					<li><a href="./blog.html">Blog</a>
-						<ul class="sub__menu">
-							<li><a href="./blog-single.html">Type article</a></li>
-						</ul>
-					</li>
-					<li><a href="./contact.html">Contact</a></li>
+					<li><a href="/articles/list" class="menu--active">HOME</a></li>
+					<li><a href="/login">LOGIN</a></li>
 				</ul>
 			</nav>
 		</div>

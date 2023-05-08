@@ -26,8 +26,9 @@ class ArticleController extends Controller
 
         return view('test');
     }
-    public function toLogin()
+    public function toLogin(Request $request)
     {
+
         return view('admin.login');
     }
     public function toSignUp()
@@ -72,23 +73,27 @@ class ArticleController extends Controller
     //     }
     public function home(Request $request)
     {
-        $ar = Article::all();
-        $cat = Categorie::all();
-        $theme = Theme::all();
-        $Author=Author::find($request->session()->get('sessionid'));
-        return view(
-            'home',
-            [
-                'articles' => $ar,
-                'categorie' => $cat,
-                'theme' => $theme,
-                'author' => $Author
-            ]
-        );
+        echo $request->session()->get('sessionid');
+        if ($request->session()->get('sessionid') != null) {
+            $ar = Article::all();
+            $cat = Categorie::all();
+            $theme = Theme::all();
+            $Author = Author::find($request->session()->get('sessionid'));
+            return view(
+                'home',
+                [
+                    'articles' => $ar,
+                    'categorie' => $cat,
+                    'theme' => $theme,
+                    'author' => $Author
+                ]
+            );
+        }
+        return redirect('login');
     }
     public function header(Request $request)
     {
-      return view('header');
+        return view('header');
     }
     public function action_login(Request $request)
     {
@@ -128,22 +133,30 @@ class ArticleController extends Controller
         $cat = Categorie::all();
         return redirect('home');
     }
-    public function login()
+    public function login(Request $request)
     {
+        $request->session()->forget('sessionid');
+        // $request->session()->flush();
         return view('login');
     }
     public function list(Request $request)
     {
-        $ar = Article::all();
+        $ar = Article::paginate(3);
+        $theme=Theme::all();
         return view('index', [
-            'articles' => $ar
+            'articles' => $ar,'theme'=>$theme
         ]);
+
+        // return redirect('login');
+
     }
     public function detail(string $slug, string $id)
     {
         $ar = Article::find($id);
+        $theme=$ar->themeid;
+        $themes=Article::fromQuery("select *from article where themeid=".$theme." limit 3");
         return view('detail', [
-            'articles' => $ar
+            'articles' => $ar,'autre'=>$themes
         ]);
     }
 }

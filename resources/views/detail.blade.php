@@ -21,34 +21,22 @@
 	</div>
 	<div class="magazine-layout">
 		<div class="magazine-column">
+
+			@foreach ($autre as $row )
 			<article class="article">
-				<h2 class="article-title article-title--large">
-					<a href="#" class="article-link">The First Signs of <mark class="mark mark--primary">Alcoholic Liver</mark> Damage Are Not in the Liver</a>
-				</h2>
+				<a href="/<?php echo Util::slugify($row->titre) . '-' . $row->id; ?>.html">
+				<h5 class="article-excerpt">
+					{{ $row->titre}}	
+				</h5>
+			</a>
 				<div class="article-excerpt">
-					<p>The combination of my father's death and my personal back ground lit a fire in me to know more</p>
-					<p>He was admitted to the hospital on June 24, 2016.
+					{{ $row->resume}}	
 				</div>
-				<div class="article-author">
-					<div class="article-author-img">
-						<img src="https://assets.codepen.io/285131/author-3.png" />
-					</div>
-					<div class="article-author-info">
-						<dl>
-							<dt>David Sherof</dt>
-							<dd>Reporter</dd>
-						</dl>
-					</div>
-				</div>
+				
 			</article>
-			<article class="article">
-				<h2 class="article-title article-title--medium">
-					<a href="#" class="article-link">The Founder's Guide to Actually Understanding Users Nowadays</a>
-				</h2>
-				<div class="article-creditation">
-					<p>By Johnathan O'Connell, Andrew Van Dam, Aaron Gregg and Alyssa Fowers</p>
-				</div>
-			</article>
+			
+			@endforeach
+			
 		</div>
 		<div class="magazine-column">
 			<article class="article" >
