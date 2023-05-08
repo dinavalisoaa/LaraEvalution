@@ -6,6 +6,12 @@
 @section('title')
     <title>NEW-IA</title>
 @endsection
+@section('auth')
+<ul class="nav__menu">
+    <li><a href="/articles/list" class="menu--active">HOME</a></li>
+    <li><a href="/login">LOGIN</a></li>
+</ul>
+@endsection
 @section('login')
     <div class='icons'>
 <a href="fsjdiuroieyiuw.html">
@@ -39,8 +45,14 @@
                         <li><a href="/login">LOGIN</a></li>
                     </ul> --}}
                     @foreach ($theme as $row)
-                        <li style="background-color: ghostwhite;border-radius:30px"><a href="/articles/list?theme={{ $row->id }}"
-                                ><p>{{ $row->nom }}</p></a></li>
+                @if ($admin!=-1)
+                <li style="background-color: ghostwhite;border-radius:30px"><a href="/articles/list?theme={{ $row->id }}&admin={{$admin}}"
+                    ><p>{{ $row->nom }}</p></a></li>
+                @else
+                <li style="background-color: ghostwhite;border-radius:30px"><a href="/articles/list?theme={{ $row->id }}"
+                    ><p>{{ $row->nom }}</p></a></li>
+                @endif
+                       
                     @endforeach
 
                 </ul>
@@ -52,6 +64,7 @@
             <div class="container-fluid">
                 <div class="page-titles">
                    <h1>Actualite sur l'IA</h1>
+                   <h3>{{$topic}}</h3>
                 </div>
 
                 <div class="row">
@@ -74,7 +87,7 @@
                             </div>
                         </div>
                     @endforeach
-
+                    {{-- update article set photo=split_part(photo, './public', 2); --}}
                 </div>
 
             </div>

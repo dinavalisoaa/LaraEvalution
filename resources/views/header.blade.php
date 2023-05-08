@@ -39,10 +39,9 @@
 				</div>
 			</div>
 			<nav class="main__menu">
-				<ul class="nav__menu">
-					<li><a href="/articles/list" class="menu--active">HOME</a></li>
-					<li><a href="/login">LOGIN</a></li>
-				</ul>
+				@yield('auth')
+
+				
 			</nav>
 		</div>
 	</header>

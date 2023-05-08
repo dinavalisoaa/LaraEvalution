@@ -112,13 +112,12 @@ class ArticleController extends Controller
         $categorie = request('categorie');
         $contenu = request('contenu');
         $theme = request('theme');
-        // $request->session()->put('sessionid',$login);
 
         $session = $request->session()->get('sessionid');
 
         $file = $request->file('image');
         $photo = $file->getClientOriginalName();
-        $destinationPath = './public/uploads';
+        $destinationPath = '/uploads';
         $file->move($destinationPath, $file->getClientOriginalName());
 
         $article = new Article();
@@ -141,10 +140,31 @@ class ArticleController extends Controller
     }
     public function list(Request $request)
     {
-        $ar = Article::paginate(3);
+        $ar=new Article();
+        $topic="";
+    
+        if(request('theme')!=null){
+            $topic="A propos de ".Theme::find(request('theme'))->nom;
+
+            if(request('admin')!=null){
+                $ar=Article::where("themeid",request('theme'))->where("authorid",request('admin'))->paginate(3);
+                $topic="Auteur:".Author::find(request('admin'))->nom."A propos de".Theme::find(request('theme'))->nom;
+            }
+            else{
+            $ar=Article::where("themeid",request('theme'))->paginate(3);
+            }
+
+        }
+        elseif(request('admin')!=null){
+            $ar=Article::where("authorid",request('admin'))->paginate(3);
+            $topic="Auteur:".Author::find(request('admin'))->nom;
+        }else{
+            $ar = Article::paginate(3);
+        }
+        
         $theme=Theme::all();
         return view('index', [
-            'articles' => $ar,'theme'=>$theme
+            'articles' => $ar,'theme'=>$theme,'topic'=>$topic,'admin'=>request('admin')
         ]);
 
         // return redirect('login');

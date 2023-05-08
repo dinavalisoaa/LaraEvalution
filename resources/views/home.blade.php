@@ -4,6 +4,12 @@
     {{-- Ajouter un article --}}
 @endsection
 
+@section('auth')
+<ul class="nav__menu">
+    <li><a href="/articles/list?admin={{$author->id}}" class="menu--active">HOME</a></li>
+    <li><a href="/login">LOGIN</a></li>
+</ul>
+@endsection
 @section('login')
     <div class='icons'>
 
@@ -27,17 +33,11 @@
 <div class="a-container">
 
     <main role="main" class="container">
-        {{-- <style>
-            .containera {
-                display: grid;
-                grid-template-columns: 1fr 2fr 1fr;
-            }
-        </style> --}}
         <div class="row">
             <div class="col-xl-6 col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Checkboxes</h4>
+                        <h4 class="card-title">Detail de votre contenu</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
@@ -95,7 +95,7 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Inline Checkboxes</h4>
+                        <h4 class="card-title">Corps de votre contenu</h4>
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
