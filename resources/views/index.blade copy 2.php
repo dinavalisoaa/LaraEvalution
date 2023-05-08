@@ -42,32 +42,35 @@
         </div>
     </header>
     <div class="a-container">
+        <h1 style="text-align:center;">IA NEWS</h1>
         <div class="content-body">
             <div class="container-fluid">
                 <div class="page-titles">
-                   <h1>Actualite sur l'IA</h1>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Bootstrap</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Card</a></li>
+                    </ol>
                 </div>
 
                 <div class="row">
                     @foreach ($articles as $row)
                         <div class="col-xl-4">
                             <div class="card">
-                                <img class="card-img-top img-fluid" src="/<?php echo $row->photo; ?>" alt="Card image cap">
                                 <div class="card-header">
-                                   
+                                    <h5 class="card-title">Card title</h5>
                                 </div>
                                 <div class="card-body">
-                                     <a href="/<?php echo Util::slugify($row->resume) . '-' . $row->id; ?>.html">
-                                            <h5 class="card-title" title="Voir detail"> 
-                                                <?php echo $row->titre; ?>
-                                            </h5>
-                                    </a>
-                                    <p class="card-text"> <?php echo $row->resume; ?>
-                                    </p>
+                                    <p class="card-text">This is a wider card with supporting text and below as a natural
+                                        lead-in to the additional content. This content is a little</p>
+                                </div>
+                                <img class="card-img-bottom img-fluid" src="/upload/{{ $row->photo }}" alt="">
+                                <div class="card-footer">
+                                    <p class="card-text d-inline">Card footer</p>
+                                    <a href="javascript:void(0);" class="card-link float-end">Card link</a>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+            @endforeach
 
                 </div>
 
