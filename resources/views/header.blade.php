@@ -8,12 +8,12 @@
     @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta name="keywords" content="photo, html">
-    <link rel="stylesheet" href="/style.css">
+    {{-- <link rel="stylesheet" href="/style.css"> --}}
     <link rel="stylesheet" href="/header.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    {{-- <link rel="stylesheet" href="/bootstrap/css/bootstrap.css"> --}}
+    {{-- <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"> --}}
     
-	<link rel="stylesheet" href="/bootstrap.min.css"/>
+	{{-- <link rel="stylesheet" href="/bootstrap.min.css"/> --}}
 	<link rel="stylesheet" href="/font-awesome.min.css"/>
 </head>
 <style>
@@ -26,9 +26,9 @@
 				<div class="col-sm-4 col-md-3 order-2 order-sm-1">
 				</div>
 				<div class="col-sm-4 col-md-6 order-1  order-md-2 text-center">
-          <h2>
-            <button class="btn btn-primary">IA</button>
-            <button class="btn btn-dark">ACTU</button>
+          <h2 style="font-family:Fantasy">IA ACTU
+            {{-- <button class="btn btn-primary">IA</button> --}}
+            {{-- <button class="btn btn-dark">ACTU</button> --}}
           </h2>
 					
 				</div>
