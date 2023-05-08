@@ -185,6 +185,10 @@ ALTER TABLE ONLY public.article
 --
 -- PostgreSQL database dump complete
 --
+
+
+
+
 alter table article add column creation timestamp default current_timestamp;
 alter table article add column themeId int;
 
@@ -198,10 +202,15 @@ create table author(
 alter table article add column authorid int;
 alter table article add FOREIGN key (authorid) REFERENCES author(Id);
 
+drop table theme;
+create table theme(
+    id serial primary key,
+    nom varchar
+);
+
 insert into categorie(nom)values('Evenement');
 insert into categorie(nom)values('Flash Info');
 insert into categorie(nom)values('Blog');
-
 
 insert into theme(nom)values('Deep Learning');
 insert into theme(nom)values('Neural Link');
@@ -220,3 +229,22 @@ create table admin(
 
     insert into admin (nom,login,mdp)values('admin','admin@gmail.com',md5('admin'));
     insert into author (nom,login,mdp)values('Rabe','rabe@gmail.com',md5('rabe'));
+
+
+    create table article(
+        id serial PRIMARY key,
+        "resume" text,
+        categorieid int,
+        themeid int,
+    authorid int,
+        contenu text,
+        photo text,
+        titre varchar,
+        creation timestamp default current_timestamp,
+        FOREIGN key (categorieid) REFERENCES categorie(id),
+        FOREIGN key (themeid) REFERENCES theme(id),
+        FOREIGN key (authorid) REFERENCES author(id)
+    );
+    
+alter table article add FOREIGN key (authorid) REFERENCES author(Id);
+alter table article add FOREIGN key (authorid) REFERENCES author(Id);
